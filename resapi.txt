@@ -1,0 +1,84 @@
+step-1: create port and listen .
+```
+require('dotenv').config();
+const express= require('express');
+const app= express();
+
+const PORT= process.env.PORT || 5000;
+
+app.get('/',(req,res)=>{
+    res.send("WElcome to the server")
+})
+
+
+const start=async()=>{
+    try{
+     app.listen(PORT,()=>{
+     console.log(`linstening at port: ${PORT}`);
+     });
+    }
+    catch(e){
+        console.log(e);
+    }
+}
+start();
+```
+///////////////////////////////////////////
+Step-2: setup routes and controllers(function)
+
+router.route('/').get(getAllProducts);
+create methods in separate fle in controllers
+
+and define route in app.js
+//using middleware or setting up route
+app.use('/api/products',prod_path);
+
+//////////////////////////////////////
+Step-3: connect to mongodb atlas using mongoose
+
+const mongoDb=()=>{
+    console.log('connect db called');
+   return mongoose.connect(process.env.MDB_URL);
+}
+
+
+//////////////////////////////////////
+Step-4: create schema and model
+using mongoose.schema and mongoose.model('collection_name',schema_Name);
+
+
+
+//////////////////////////////////////
+Step-5: create .json file  and send json data on the server
+
+const start = async () => {
+    try {
+        // await Product.deleteMany();
+        await connectDb(process.env.MDB_URL);
+        await Product.create(Productjson);
+        console.log('Success');
+    }
+    catch (e) {
+        console.log(e);
+    }
+}
+
+
+
+//////////////////////////////////
+step 6: read data form database using model.find({}) in controller function
+const getAllProducts= async(req,res)=>{
+  const myData= await product.find({});
+  const myObj={}
+  if(name){}
+  res.status(200).send(myData)
+}
+
+/////////////////////
+STEP 7 :add filteration and searching 
+
+const getAllProducts= async(req,res)=>{
+  const myData= await product.find(req.query);
+  console.log(req.query);
+  res.status(200).send(myData)
+}
