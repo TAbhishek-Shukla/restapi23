@@ -19,7 +19,7 @@ const start=async()=>{
     try{
      await mongoDb();
      app.listen(PORT,()=>{
-     console.log(`linstening at port: ${PORT}`);
+     console.log(`listening at port: ${PORT}`);
      });
     }
     catch(e){
